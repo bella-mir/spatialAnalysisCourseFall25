@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Начало работы &#8212; Basics of Spatial Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/week0';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="I. Данные" href="week1.html" />
+    <link rel="prev" title="Spatial Analysis Python" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Spatial Analysis Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Введение</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Начало работы</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Материалы занятий</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="week1.html">I. Данные</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/spatialPython_hse25" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/spatialPython_hse25/issues/new?title=Issue%20on%20page%20%2Fchapters/week0.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/week0.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Начало работы</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyer-notebook">Jupyer Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Редакторы кода</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-jupyter-notebook-visual-studio-code-vs-code"><strong>I.Jupyter Notebook в Visual Studio Code (VS Code)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>1. Установка необходимых инструментов</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code"><strong>1.1. Установите VS Code</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>1.2. Установите Python</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-vs-code"><strong>1.3. Установите расширение Jupyter в VS Code</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>2. Настройка рабочей директории и создание нового блокнота</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>3. Виртуальные окружения</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4. Основные функции</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>4.1. Запуск ячеек</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>4.2. Установка библиотек</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><strong>Полезные советы</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-jupyter-notebook-google-colab"><strong>II.Jupyter Notebook в Google Colab</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab"><strong>1. Открытие Google Colab</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipynb"><strong>2. Загрузка файла .ipynb</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>3. Основные функции</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>3.1. Запуск ячеек</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>3.2. Установка библиотек</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>3.3. Загрузка данных</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>4. Сохранение работы</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="section" id="id1">
+<h1>Начало работы<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>Коротко о том, как начать работать с Python для анализа пространственных данных - об одном их множества возможных вариантов: какой редактор кода использовать, как создать виртуальную среду и настроить хранение документов.</p>
+<p>Если вы чем-то уже пользуетесь (например, запускаете Jupyter Notebook через Anakonda), этот раздел можно смело пропустить. Но наши читатели пишут, что он в любом случае может оказаться полезным;)</p>
+<div class="section" id="jupyer-notebook">
+<h2>Jupyer Notebook<a class="headerlink" href="#jupyer-notebook" title="Permalink to this heading">#</a></h2>
+<p><strong>Jupyter Notebook</strong> - это интерактивная среда для создания и обмена документами, содержащими код, текст, изображения и другие элементы. Он позволяет создавать и выполнять код в отдельных ячейках, что делает процесс исследования данных более интерактивным и удобным. Jupyter Notebook поддерживает множество языков программирования, включая Python, R, Julia и другие.</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1200px-Jupyter_logo.svg.png" width="200" height="200" />
+</div>
+<div class="section" id="id2">
+<h2>Редакторы кода<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>В рамках нашего курс мы будем работать с <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code (VS Code)</a>. Это легкий и мощный текстовый редактор, разработанный компанией Microsoft. Он предназначен для работы с широким спектром языков программирования: JavaScript, Python, HTML/CSS, Java, C++.</p>
+<p>Я люблю VS Code за его универсальность, за большое количество расширений, два из которых нам точно пригодятся!</p>
+<p>Ниже вы найдете две инструкции по работе с Jupyter Notebook:</p>
+<ol class="arabic simple">
+<li><p>в Visual Studio Code (VS Code);</p></li>
+<li><p>в Google Colab</p></li>
+</ol>
+<p>Несмотря на то, что мы будем работать в VS Code, вы можете выбрать любой из известных вам вариантов</p>
+</div>
+<div class="section" id="i-jupyter-notebook-visual-studio-code-vs-code">
+<h2><strong>I.Jupyter Notebook в Visual Studio Code (VS Code)</strong><a class="headerlink" href="#i-jupyter-notebook-visual-studio-code-vs-code" title="Permalink to this heading">#</a></h2>
+<img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png" width="200" height="200" />
+<div class="section" id="id3">
+<h3><strong>1. Установка необходимых инструментов</strong><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="section" id="vs-code">
+<h4><strong>1.1. Установите VS Code</strong><a class="headerlink" href="#vs-code" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Скачайте с официального сайта: <a class="reference external" href="https://code.visualstudio.com">https://code.visualstudio.com</a>.</p></li>
+<li><p>Запустите установщик и следуйте инструкциям.</p></li>
+</ol>
+</div>
+<div class="section" id="python">
+<h4><strong>1.2. Установите Python</strong><a class="headerlink" href="#python" title="Permalink to this heading">#</a></h4>
+<p>Скорее всего он у вас уже установлен, но если нет:</p>
+<ol class="arabic simple">
+<li><p>Скачайте Python (версия 3.8+): <a class="reference external" href="https://www.python.org/downloads">https://www.python.org/downloads</a>.</p></li>
+<li><p>В установщике <strong>отметьте галочку</strong> <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Python</span> <span class="pre">to</span> <span class="pre">PATH</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="jupyter-vs-code">
+<h4><strong>1.3. Установите расширение Jupyter в VS Code</strong><a class="headerlink" href="#jupyter-vs-code" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Откройте VS Code.</p></li>
+<li><p>Перейдите во вкладку <strong>Расширения</strong> (Ctrl+Shift+X).</p></li>
+<li><p>Найдите <strong>“Jupyter”</strong> (разработчик: Microsoft) и установите.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><strong>2. Настройка рабочей директории и создание нового блокнота</strong><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>Чтобы структурировать работу в рамках нашего курса, я рекомендую настроить одну директорию для выполнения всех проектов и упражнений.</p>
+<p><strong>2.1</strong> Создайте пустую папку в любом месте на вашем компьютере.</p>
+<p><strong>2.2</strong> Откройте ее в VS Code (File → Open Folder или перетащите папку в окно VS Code).</p>
+<p><strong>2.3</strong> В окне Explorer кликните правой кнопкой мыши → New File → Введите название с расширением <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>.</p>
+<p><strong>2.4</strong> Откройте созданный файл.</p>
+</div>
+<div class="section" id="id5">
+<h3><strong>3. Виртуальные окружения</strong><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>Чтобы изолировать зависимости, я рекомендую также настроить виртуальное окружение, куда будут устанавливаться все библиотеки. Для этого:</p>
+<ol class="arabic simple">
+<li><p>Откройте окно терминала (Terminal → New Terminal).</p></li>
+<li><p>Выполните следующие команды (поочередно):</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv<span class="w">      </span><span class="c1"># Создать окружение</span>
+<span class="nb">source</span><span class="w"> </span>myenv/bin/activate<span class="w"> </span><span class="c1"># Активировать (Linux/Mac)</span>
+myenv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">    </span><span class="c1"># Активировать (Windows)</span>
+</pre></div>
+</div>
+<p>Теперь вы сможете выбрать это окружение для работы.</p>
+</div>
+<div class="section" id="id6">
+<h3><strong>4. Основные функции</strong><a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<div class="section" id="id7">
+<h4><strong>4.1. Запуск ячеек</strong><a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Выполнить ячейку</strong>: <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code>.</p></li>
+<li><p><strong>Добавить ячейку</strong>:</p>
+<ul>
+<li><p>Код: нажмите <code class="docutils literal notranslate"><span class="pre">+</span></code> на панели или <code class="docutils literal notranslate"><span class="pre">Ctrl+M</span> <span class="pre">B</span></code>.</p></li>
+<li><p>Текст (Markdown): <code class="docutils literal notranslate"><span class="pre">Ctrl+M</span> <span class="pre">M</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h4><strong>4.2. Установка библиотек</strong><a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<ol class="arabic">
+<li><p>Откройте <strong>терминал</strong> в VS Code (Ctrl+`).</p></li>
+<li><p>Введите:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span>osmnx<span class="w"> </span>geopandas
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><strong>Полезные советы</strong><a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p><em>(Документация: <a class="reference external" href="https://code.visualstudio.com/docs/python/jupyter-support">Jupyter in VS Code</a>)</em></p>
+<ul class="simple">
+<li><p><strong>Горячие клавиши</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">/</span></code> — закомментировать код.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">Up/Down</span></code> — переместить ячейку.</p></li>
+</ul>
+</li>
+<li><p>Если ядро не отвечает:</p>
+<ul>
+<li><p>Перезапустите его через <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+P</span> <span class="pre">→</span> <span class="pre">Jupyter:</span> <span class="pre">Restart</span> <span class="pre">Kernel</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Готово!</strong> Теперь вы можете работать с Jupyter Notebook в VS Code.</p>
+</div>
+</div>
+<div class="section" id="ii-jupyter-notebook-google-colab">
+<h2><strong>II.Jupyter Notebook в Google Colab</strong><a class="headerlink" href="#ii-jupyter-notebook-google-colab" title="Permalink to this heading">#</a></h2>
+<img src="https://colab.research.google.com/img/colab_favicon_256px.png" width="100" height="100" />
+<p>Google Colab — это бесплатная облачная платформа для работы с Jupyter Notebook. Она не требует установки Python на компьютер и позволяет работать с кодом прямо в браузере.</p>
+<div class="section" id="google-colab">
+<h3><strong>1. Открытие Google Colab</strong><a class="headerlink" href="#google-colab" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Перейдите на сайт: <a class="reference external" href="https://colab.research.google.com">https://colab.research.google.com</a></p></li>
+<li><p>Войдите в свой Google-аккаунт (если не авторизованы)</p></li>
+<li><p>Нажмите <strong>“Новый блокнот”</strong> (File → New Notebook)</p></li>
+</ol>
+</div>
+<div class="section" id="ipynb">
+<h3><strong>2. Загрузка файла .ipynb</strong><a class="headerlink" href="#ipynb" title="Permalink to this heading">#</a></h3>
+<p>Если у вас уже есть Jupyter Notebook (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>), загрузите его:</p>
+<p><strong>Способ 1:</strong></p>
+<ol class="arabic simple">
+<li><p>Нажмите <strong>“Файл”</strong> → <strong>“Загрузить блокнот”</strong></p></li>
+<li><p>Выберите файл с компьютера</p></li>
+</ol>
+<p><strong>Способ 2:</strong></p>
+<ol class="arabic simple">
+<li><p>Загрузите файл в Google Drive</p></li>
+<li><p>Откройте правой кнопкой → “Открыть с помощью” → “Google Colab”</p></li>
+</ol>
+</div>
+<div class="section" id="id10">
+<h3><strong>3. Основные функции</strong><a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<div class="section" id="id11">
+<h4><strong>3.1. Запуск ячеек</strong><a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Выполнить ячейку: ▶️ или <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code></p></li>
+<li><p>Добавить ячейку:</p>
+<ul>
+<li><p>Код: <code class="docutils literal notranslate"><span class="pre">+Код</span></code> или <code class="docutils literal notranslate"><span class="pre">Ctrl+M</span> <span class="pre">B</span></code></p></li>
+<li><p>Текст: <code class="docutils literal notranslate"><span class="pre">+Текст</span></code> или <code class="docutils literal notranslate"><span class="pre">Ctrl+M</span> <span class="pre">M</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h4><strong>3.2. Установка библиотек</strong><a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install pandas numpy matplotlib osmnx geopandas
+</pre></div>
+</div>
+<p>(Знак <code class="docutils literal notranslate"><span class="pre">!</span></code> означает выполнение в терминале)</p>
+</div>
+<div class="section" id="id13">
+<h4><strong>3.3. Загрузка данных</strong><a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<p><strong>Из интернета:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://example.com/data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>С компьютера:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="n">uploaded</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3><strong>4. Сохранение работы</strong><a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<p><strong>В Google Drive:</strong></p>
+<ol class="arabic simple">
+<li><p>Файл → Сохранить копию на Диске</p></li>
+</ol>
+<p><strong>На компьютер:</strong></p>
+<ol class="arabic simple">
+<li><p>Файл → Скачать → .ipynb (или .py)</p></li>
+</ol>
+<p><strong>Готово!</strong> Теперь вы можете эффективно работать с Jupyter Notebook в Google Colab.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Spatial Analysis Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="week1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">I. Данные</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyer-notebook">Jupyer Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Редакторы кода</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-jupyter-notebook-visual-studio-code-vs-code"><strong>I.Jupyter Notebook в Visual Studio Code (VS Code)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>1. Установка необходимых инструментов</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code"><strong>1.1. Установите VS Code</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>1.2. Установите Python</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-vs-code"><strong>1.3. Установите расширение Jupyter в VS Code</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>2. Настройка рабочей директории и создание нового блокнота</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>3. Виртуальные окружения</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4. Основные функции</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>4.1. Запуск ячеек</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>4.2. Установка библиотек</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><strong>Полезные советы</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-jupyter-notebook-google-colab"><strong>II.Jupyter Notebook в Google Colab</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab"><strong>1. Открытие Google Colab</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipynb"><strong>2. Загрузка файла .ipynb</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>3. Основные функции</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>3.1. Запуск ячеек</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>3.2. Установка библиотек</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>3.3. Загрузка данных</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>4. Сохранение работы</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bella Mironova
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright © 2025 Bella Mironova.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
