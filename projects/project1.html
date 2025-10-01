@@ -516,23 +516,11 @@ document.write(`
 <h3>Шаг 4: Вычисляем площадь района<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_district</span> <span class="o">=</span> <span class="o">...</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># area_district = ...</span>
 
 
-<span class="c1">#Смотрим на результат</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Площадь района: </span><span class="si">{</span><span class="n">area_district</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> м²&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">area_district</span> <span class="o">=</span> <span class="o">...</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#Смотрим на результат</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Площадь района: </span><span class="si">{</span><span class="n">area_district</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> м²&quot;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: &#39;ellipsis&#39; object is not subscriptable
+<span class="c1"># #Смотрим на результат</span>
+<span class="c1"># print(f&quot;Площадь района: {area_district[0]} м²&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -542,23 +530,11 @@ document.write(`
 <h3>Шаг 5: Вычисляем площадь зданий<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings_utm</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
-<span class="n">buildings_area</span> <span class="o">=</span> <span class="n">buildings_utm</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># buildings_utm[&#39;area&#39;] = ...</span>
+<span class="c1"># buildings_area = buildings_utm[&#39;area&#39;].sum()</span>
 
-<span class="c1">#Смотрим на результат</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Площадь застроенной территории: </span><span class="si">{</span><span class="n">buildings_area</span><span class="si">}</span><span class="s2"> м²&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">buildings_utm</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">buildings_area</span> <span class="o">=</span> <span class="n">buildings_utm</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#Смотрим на результат</span>
-
-<span class="ne">TypeError</span>: &#39;ellipsis&#39; object does not support item assignment
+<span class="c1"># #Смотрим на результат</span>
+<span class="c1"># print(f&quot;Площадь застроенной территории: {buildings_area} м²&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -568,22 +544,10 @@ document.write(`
 <h3>Шаг 6: Вычисляем долю застроенной территории<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">built_share</span> <span class="o">=</span> <span class="o">...</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># built_share = ...</span>
 
-<span class="c1">#Смотрим на результат</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Площадь застроенной территории: </span><span class="si">{</span><span class="n">built_share</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">built_share</span> <span class="o">=</span> <span class="o">...</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#Смотрим на результат</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Площадь застроенной территории: </span><span class="si">{</span><span class="n">built_share</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: &#39;ellipsis&#39; object is not subscriptable
+<span class="c1"># #Смотрим на результат</span>
+<span class="c1"># print(f&quot;Площадь застроенной территории: {built_share[0]:.2f} %&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -593,19 +557,8 @@ document.write(`
 <h3>Шаг 7: Вычисляем площадь по разным типам землепользования<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_utm</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
-<span class="n">summary</span> <span class="o">=</span> <span class="n">landuse_utm</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;landuse&#39;</span><span class="p">)[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">landuse_utm</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">summary</span> <span class="o">=</span> <span class="n">landuse_utm</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;landuse&#39;</span><span class="p">)[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-<span class="ne">TypeError</span>: &#39;ellipsis&#39; object does not support item assignment
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># landuse_utm[&#39;area&#39;] = ...</span>
+<span class="c1"># summary = landuse_utm.groupby(&#39;landuse&#39;)[&#39;area&#39;].sum()</span>
 </pre></div>
 </div>
 </div>
