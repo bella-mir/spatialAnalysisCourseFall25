@@ -11,6 +11,7 @@ parts:
   - caption: Материалы занятий
     chapters:
       - file: chapters/week1
+      - file: chapters/week2
 
   - caption: Проекты
     chapters:
