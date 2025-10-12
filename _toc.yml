@@ -12,8 +12,11 @@ parts:
     chapters:
       - file: chapters/week1
       - file: chapters/week2
+      - file: chapters/week3_1
+      - file: chapters/week3_2
 
   - caption: Проекты
     chapters:
       - file: projects/project1
+      - file: projects/project2
 
