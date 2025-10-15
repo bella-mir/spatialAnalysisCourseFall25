@@ -363,17 +363,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-point-analysis">Пространственная статистика точек (Spatial Point Analysis)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor-distance">1. Расстояние до ближайшего соседа (Nearest Neighbor Distance)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-index">2. Nearest Neighbour Index</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Визуальное исследование точек</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Плотность на основе регулярной сетки</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-density-estimation">5. Плотностная модель (Kernel Density Estimation)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6. Центрография</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7. Диаграмма Вороного</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.Итог</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor-distance">1. Расстояние до ближайшего соседа (Nearest Neighbor Distance)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-index">2. Nearest Neighbour Index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Визуальное исследование точек</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Плотность на основе регулярной сетки</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-density-estimation">5. Плотностная модель (Kernel Density Estimation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6. Центрография</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7. Диаграмма Вороного</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.Итог</a></li>
 </ul>
             </nav>
         </div>
@@ -387,8 +384,12 @@ document.write(`
                   
   <div class="section" id="iv">
 <h1>IV. Введение в пространственную статистику<a class="headerlink" href="#iv" title="Permalink to this heading">#</a></h1>
+<p><strong>Часть 1: Пространственная статистика точек (Spatial Point Analysis)</strong></p>
 <p>Пространственная статистика точек — это набор методов для анализа распределения точек в пространстве. Эти методы позволяют изучать закономерности и кластеризацию точек, а также проводить проверку гипотез о случайности распределения объектов. Сегодня мы познакомимся с пространственной статистикой точек.</p>
 <p>Эти навыки помогут дополнить анализ исторической вспышки холеры в Лондоне (1854) – <a class="reference internal" href="../projects/project2.html"><span class="doc std std-doc">второй проект</span></a> на нашем курсе.</p>
+<p>–</p>
+<p>В этом разделе мы изучим данные о ДТП с Санкт-Петербурге за 2023 год</p>
+<p>В дополнение к основной теме мы познакомимся с библиотеками seaborn и contextily. Seaborn - крутая библиотека для визуализации на основн matplotlib. Contextily помогает добавлять базовые карты (подложки).</p>
 <ol class="arabic simple" start="0">
 <li><p>Импортируем нужные библиотеки</p></li>
 </ol>
@@ -424,11 +425,6 @@ document.write(`
 <p style="color:#26528C; font-style:italic"><strong>matplotlib.pyplot</strong> – модуль визуализации, вдохновлённый MATLAB. Позволяет строить 2D-графики (линии, гистограммы, scatter-плоты), настраивать оформление, добавлять подписи, легенды и работать с осями.</p>
 <p style="color:#26528C; font-style:italic"><strong>matplotlib</strong> – базовый пакет для создания статических, анимированных и интерактивных визуализаций в Python. Содержит механизмы настройки стилей, колормэппингов и управления элементами фигуры (шрифты, размеры, отступы).</p>
 <p style="color:#26528C; font-style:italic"><strong>contextily</strong> – утилита для подложек карт (tile basemaps) в matplotlib. Позволяет легко добавить тайловые слои (OpenStreetMap, Stamen и др.) под ваши геоплоты, автоматически приводя проекции в соответствие.</p>
-<div class="section" id="spatial-point-analysis">
-<h2>Пространственная статистика точек (Spatial Point Analysis)<a class="headerlink" href="#spatial-point-analysis" title="Permalink to this heading">#</a></h2>
-<p>Пространственная статистика точек — это набор методов для анализа распределения точек в пространстве. Эти методы позволяют изучать закономерности и кластеризацию точек, а также проводить проверку гипотез о случайности распределения объектов.</p>
-<p>В этом разделе мы изучим данные о ДТП с Санкт-Петербурге за 2023 год</p>
-<p>В дополнение к основной теме мы познакомимся с библиотеками seaborn и contextily. Seaborn - крутая библиотека для визуализации на основн matplotlib. Contextily помогает добавлять базовые карты (подложки).</p>
 <p>Читаем данные о ДТП и перепроецируем в подходящую UTM-зону</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -441,7 +437,7 @@ document.write(`
 </div>
 </div>
 <div class="section" id="nearest-neighbor-distance">
-<h3>1. Расстояние до ближайшего соседа (Nearest Neighbor Distance)<a class="headerlink" href="#nearest-neighbor-distance" title="Permalink to this heading">#</a></h3>
+<h2>1. Расстояние до ближайшего соседа (Nearest Neighbor Distance)<a class="headerlink" href="#nearest-neighbor-distance" title="Permalink to this heading">#</a></h2>
 <p>Этот метод используется для измерения расстояний между точками и анализа их пространственного распределения</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -467,7 +463,7 @@ document.write(`
 </div>
 </div>
 <div class="section" id="nearest-neighbour-index">
-<h3>2. Nearest Neighbour Index<a class="headerlink" href="#nearest-neighbour-index" title="Permalink to this heading">#</a></h3>
+<h2>2. Nearest Neighbour Index<a class="headerlink" href="#nearest-neighbour-index" title="Permalink to this heading">#</a></h2>
 <p>NNI (Nearest Neighbor Index, индекс ближайшего соседа) — это статистическая мера, которая позволяет оценить, насколько равномерно распределены объекты в пространстве. Давайте посмотрим, на распределение театров в Санкт-Петербурге</p>
 <p>Как он считается?</p>
 <p>NNI (Clark–Evans nearest-neighbor index) сравнивает <strong>фактическое среднее расстояние до ближайшего соседа</strong> с ожидаемым средним расстоянием при <strong>случайном равномерном размещении</strong> (CSR, Poisson).</p>
@@ -526,7 +522,7 @@ crs=accidents.crs # Убедитесь, что координатная сист
 <p>Но это тоже неидеальный вариант для Санкт-Петербурга, почему?</p>
 </div>
 <div class="section" id="id1">
-<h3>3. Визуальное исследование точек<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h2>3. Визуальное исследование точек<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">accidents_utm</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">accidents_utm</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">accidents_utm</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
@@ -558,7 +554,7 @@ crs=accidents.crs # Убедитесь, что координатная сист
 </div>
 </div>
 <div class="section" id="id2">
-<h3>4. Плотность на основе регулярной сетки<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h2>4. Плотность на основе регулярной сетки<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>Отобразим плотность на основе ячеек регулярной сетки</p>
 <p>Когда слишком много точек сосредоточено в одной области, плотное наложение точек затрудняет выявление паттернов. Например, на карте видно, что в центре города сосредоточено очень много аварий, но трудно понять, является ли это равномерным распределением или есть места с особенно высокой концентрацией. Поэтому можно наложить точки на сетку и наглядно увидеть концентрацию</p>
 <div class="cell docutils container">
@@ -594,7 +590,7 @@ crs=accidents.crs # Убедитесь, что координатная сист
 </div>
 </div>
 <div class="section" id="kernel-density-estimation">
-<h3>5. Плотностная модель (Kernel Density Estimation)<a class="headerlink" href="#kernel-density-estimation" title="Permalink to this heading">#</a></h3>
+<h2>5. Плотностная модель (Kernel Density Estimation)<a class="headerlink" href="#kernel-density-estimation" title="Permalink to this heading">#</a></h2>
 <p>Альтернативный подход оценка плотности с помощью KDE (kernel density estimation): эмпирическая аппроксимация функции плотности вероятности.</p>
 <p>Вместо того чтобы накладывать сетку квадратов или гексагонов и подсчитывать, сколько точек попадает в каждую, KDE накладывает сетку точек на интересующее пространство и размещает функции ядра, которые учитывают точки вокруг них с разным весом в зависимости от расстояния. Эти подсчеты затем агрегируются, чтобы создать глобальную поверхность с вероятностью плотности.</p>
 <div class="cell docutils container">
@@ -630,7 +626,7 @@ crs=accidents.crs # Убедитесь, что координатная сист
 </div>
 </div>
 <div class="section" id="id3">
-<h3>6. Центрография<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h2>6. Центрография<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>Это раздел пространственного анализа, посвящённый выявлению «центров» точечного распределения и оценке его структуры.
 Главные задачи центрографии:</p>
 <ul class="simple">
@@ -717,7 +713,7 @@ crs=accidents.crs # Убедитесь, что координатная сист
 </div>
 </div>
 <div class="section" id="id4">
-<h3>7. Диаграмма Вороного<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h2>7. Диаграмма Вороного<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>Диаграмма Вороного (или разбиение Вороного) — это разбиение пространства на ячейки по следующему правилу: каждой точке-генератору (site) сопоставляется такая область, что любая точка внутри этой области ближе к нему, чем к любой другой.</p>
 <p>Загрузим данные станций метро и разобьём территорию Петербурга на области Вороного: каждая область соответствует ближайшей станции</p>
 <div class="cell docutils container">
@@ -866,7 +862,7 @@ crs=accidents.crs # Убедитесь, что координатная сист
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/ry/9bb7wrz54vq_kn2ytlj6ynzm0000gn/T/ipykernel_15055/192412157.py:2: DeprecationWarning: The &#39;unary_union&#39; attribute is deprecated, use the &#39;union_all()&#39; method instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/ry/9bb7wrz54vq_kn2ytlj6ynzm0000gn/T/ipykernel_15908/192412157.py:2: DeprecationWarning: The &#39;unary_union&#39; attribute is deprecated, use the &#39;union_all()&#39; method instead.
   clipped_vor = gpd.clip(vor_gdf, admin_border.geometry.unary_union)
 </pre></div>
 </div>
@@ -875,9 +871,8 @@ crs=accidents.crs # Убедитесь, что координатная сист
 </div>
 <p>Мы построили классическую диаграмму Вороного по станциям метро — пространство города разбилось на ячейки, каждая из которых показывает зону ближайшей станции. Это наглядно демонстрирует «зоны влияния» метро и помогает быстро оценить доступность станций для разных кварталов. Однако следует помнить, что вычисления основаны на прямом (евклидовом) расстоянии, без учёта реальной уличной сети, барьеров и особенностей рельефа. Поэтому, несмотря на полезную наглядность, для точного анализа доступности стоит использовать инструменты сетевого анализа (с некоторыми из них мы познакомимся в следующие недели)</p>
 </div>
-</div>
 <div class="section" id="id5">
-<h2>4.Итог<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2>8.Итог<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Познакомились с основами анализа пространственного распределения точек на примере данных ДТП в Санкт-Петербурге.</p></li>
 <li><p>Познакомились с Диаграммой Вороного и построили «зоны влияния» станций метро: каждая точка города отнесена к ближайшей станции по евклидову расстоянию.</p></li>
@@ -955,17 +950,14 @@ crs=accidents.crs # Убедитесь, что координатная сист
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-point-analysis">Пространственная статистика точек (Spatial Point Analysis)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor-distance">1. Расстояние до ближайшего соседа (Nearest Neighbor Distance)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-index">2. Nearest Neighbour Index</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Визуальное исследование точек</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Плотность на основе регулярной сетки</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-density-estimation">5. Плотностная модель (Kernel Density Estimation)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6. Центрография</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7. Диаграмма Вороного</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.Итог</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor-distance">1. Расстояние до ближайшего соседа (Nearest Neighbor Distance)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-index">2. Nearest Neighbour Index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Визуальное исследование точек</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. Плотность на основе регулярной сетки</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-density-estimation">5. Плотностная модель (Kernel Density Estimation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6. Центрография</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7. Диаграмма Вороного</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.Итог</a></li>
 </ul>
   </nav></div>
 
