@@ -394,8 +394,7 @@ document.write(`
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>      
-<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>   
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>   
 <span class="kn">import</span> <span class="nn">osmnx</span> <span class="k">as</span> <span class="nn">ox</span>   
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  
@@ -725,6 +724,7 @@ crs=accidents.crs # Убедитесь, что координатная сист
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Прочитаем данные о станциях метро</span>
 <span class="n">metro</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;data/spb_metro.geojson&#39;</span><span class="p">)</span>
+<span class="n">admin_okrug</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;data/spb_admin.gpkg&#39;</span><span class="p">)</span>
 
 <span class="c1">#Создадим полигон с границами города на основе admin_okrug c помощью инструмента dissolve</span>
 <span class="n">admin_border</span> <span class="o">=</span> <span class="n">admin_okrug</span><span class="o">.</span><span class="n">dissolve</span><span class="p">()</span>
@@ -747,18 +747,11 @@ crs=accidents.crs # Убедитесь, что координатная сист
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">metro</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;data/spb_metro.geojson&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#Создадим полигон с границами города на основе admin_okrug c помощью инструмента dissolve</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">admin_border</span> <span class="o">=</span> <span class="n">admin_okrug</span><span class="o">.</span><span class="n">dissolve</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Построим карту с двумя слоями</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-
-<span class="ne">NameError</span>: name &#39;admin_okrug&#39; is not defined
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pyogrio/geopandas.py:275: UserWarning: More than one layer found in &#39;spb_admin.gpkg&#39;: &#39;district&#39; (default), &#39;okrug&#39;. Specify layer parameter to avoid this warning.
+  result = read_func(
 </pre></div>
 </div>
+<img alt="../_images/fe3cfedd8681036b1f6e663d6eadac9868f06597294bd65390605cd1b5bcff50.png" src="../_images/fe3cfedd8681036b1f6e663d6eadac9868f06597294bd65390605cd1b5bcff50.png" />
 </div>
 </div>
 <p>Строим диаграмму Вороного</p>
@@ -826,22 +819,7 @@ crs=accidents.crs # Убедитесь, что координатная сист
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">points_mp</span> <span class="o">=</span> <span class="n">MultiPoint</span><span class="p">(</span><span class="n">metro</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># 2. Генерируем диаграмму Вороного по точечному набору станций метро,</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">#    ограничивая все ячейки рамкой города (envelope) — чтобы полигоны</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1">#    не выходили за пределы Санкт-Петербурга.</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">vor</span> <span class="o">=</span> <span class="n">voronoi_diagram</span><span class="p">(</span><span class="n">points_mp</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="n">admin_border</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># 3. Создаём GeoDataFrame из полигонов Вороного:</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1">#    конвертируем коллекцию геометрий в список и передаём его в GeoDataFrame,</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1">#    сохраняя исходную систему координат (CRS) станций метро.</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">cells</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">vor</span><span class="o">.</span><span class="n">geoms</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;admin_border&#39; is not defined
-</pre></div>
-</div>
+<img alt="../_images/15fcaf31ea34373893bdfbc5c325e177fac1e54791286d52d8947bd9666cd433.png" src="../_images/15fcaf31ea34373893bdfbc5c325e177fac1e54791286d52d8947bd9666cd433.png" />
 </div>
 </div>
 <p>Обрежем диаграмму Вороного по границам города</p>
@@ -888,17 +866,11 @@ crs=accidents.crs # Убедитесь, что координатная сист
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># 1.Выполняем обрезку (clip) полигонов Вороного по границе Санкт-Петербурга</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">clipped_vor</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">vor_gdf</span><span class="p">,</span> <span class="n">admin_border</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">unary_union</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># 2. Визуализируем результат</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-
-<span class="ne">NameError</span>: name &#39;vor_gdf&#39; is not defined
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/ry/9bb7wrz54vq_kn2ytlj6ynzm0000gn/T/ipykernel_15055/192412157.py:2: DeprecationWarning: The &#39;unary_union&#39; attribute is deprecated, use the &#39;union_all()&#39; method instead.
+  clipped_vor = gpd.clip(vor_gdf, admin_border.geometry.unary_union)
 </pre></div>
 </div>
+<img alt="../_images/c9212bb7e7ff7910173f322c19c91dc01d212f12fd5a1224c530f7eac4f1900d.png" src="../_images/c9212bb7e7ff7910173f322c19c91dc01d212f12fd5a1224c530f7eac4f1900d.png" />
 </div>
 </div>
 <p>Мы построили классическую диаграмму Вороного по станциям метро — пространство города разбилось на ячейки, каждая из которых показывает зону ближайшей станции. Это наглядно демонстрирует «зоны влияния» метро и помогает быстро оценить доступность станций для разных кварталов. Однако следует помнить, что вычисления основаны на прямом (евклидовом) расстоянии, без учёта реальной уличной сети, барьеров и особенностей рельефа. Поэтому, несмотря на полезную наглядность, для точного анализа доступности стоит использовать инструменты сетевого анализа (с некоторыми из них мы познакомимся в следующие недели)</p>
